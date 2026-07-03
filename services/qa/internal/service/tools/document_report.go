@@ -18,6 +18,12 @@ const (
 	ToolRegenerateReportText      = "regenerate_report_text"
 	ToolRegenerateReportSection   = "regenerate_report_section"
 	ToolGetTemplateSchema         = "get_template_schema"
+	ToolListReports               = "list_reports"
+	ToolGetReport                 = "get_report"
+	ToolListMaterials             = "list_materials"
+	ToolGetMaterial               = "get_material"
+	ToolListReportFiles           = "list_report_files"
+	ToolReadReportFile            = "read_report_file"
 
 	defaultDocumentToolAlias = "document"
 )
@@ -32,6 +38,12 @@ var documentReportToolNames = map[string]struct{}{
 	ToolRegenerateReportOutline:   {},
 	ToolRegenerateReportText:      {},
 	ToolRegenerateReportSection:   {},
+	ToolListReports:               {},
+	ToolGetReport:                 {},
+	ToolListMaterials:             {},
+	ToolGetMaterial:               {},
+	ToolListReportFiles:           {},
+	ToolReadReportFile:            {},
 }
 
 var DefaultDocumentReportToolNames = []string{

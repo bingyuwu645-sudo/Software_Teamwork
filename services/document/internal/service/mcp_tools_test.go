@@ -24,6 +24,12 @@ func TestMCPToolServiceListToolsDefinesStableSchemas(t *testing.T) {
 		DocumentMCPToolGetTemplateSchema,
 		DocumentMCPToolExportReportDOCX,
 		DocumentMCPToolGetReportResult,
+		DocumentMCPToolListReports,
+		DocumentMCPToolGetReport,
+		DocumentMCPToolListMaterials,
+		DocumentMCPToolGetMaterial,
+		DocumentMCPToolListReportFiles,
+		DocumentMCPToolReadReportFile,
 	}
 	if len(tools) != len(want) {
 		t.Fatalf("tool count = %d, want %d", len(tools), len(want))
@@ -715,6 +721,20 @@ func (f *fakeMCPReportService) GetReport(context.Context, RequestContext, string
 	return f.report, nil
 }
 
+func (f *fakeMCPReportService) ListReports(_ context.Context, _ RequestContext, _ ReportListFilter) (ReportListResult, error) {
+	if f.err != nil {
+		return ReportListResult{}, f.err
+	}
+	return ReportListResult{}, nil
+}
+
+func (f *fakeMCPReportService) ListSections(_ context.Context, _ RequestContext, _ string) ([]ReportSection, error) {
+	if f.err != nil {
+		return nil, f.err
+	}
+	return nil, nil
+}
+
 type fakeMCPReportSettingsService struct {
 	settings ReportSettings
 	err      error
@@ -748,6 +768,13 @@ func (f *fakeMCPReportFileService) GetReportFile(context.Context, RequestContext
 		return ReportFile{}, f.getErr
 	}
 	return f.getFile, nil
+}
+
+func (f *fakeMCPReportFileService) ListReportFiles(_ context.Context, _ RequestContext, _ ReportFileListFilter) (ReportFileListResult, error) {
+	if f.getErr != nil {
+		return ReportFileListResult{}, f.getErr
+	}
+	return ReportFileListResult{}, nil
 }
 
 type fakeMCPOperationRecorder struct {

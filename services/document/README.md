@@ -142,6 +142,12 @@ adapter with these stable tool names:
 - `get_template_schema`
 - `export_report_docx`
 - `get_report_result`
+- `list_reports`
+- `get_report`
+- `list_materials`
+- `get_material`
+- `list_report_files`
+- `read_report_file`
 
 The adapter accepts a trusted `RequestContext`, validates JSON-object
 arguments, calls existing Document services, returns only safe summaries and

@@ -75,6 +75,7 @@ func main() {
 		ReportService:         reportService,
 		ReportSettingsService: repo,
 		ReportFileSvc:         reportFileService,
+		MaterialService:       documents,
 		Recorder:              repo,
 	})
 	w := worker.New(cfg.RedisAddr, logger, repo, reportFileService, reportGenerationService)
